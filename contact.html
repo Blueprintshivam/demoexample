@@ -1,0 +1,330 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | AIROTRIPS</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. Global Styles & Variables (Consistent with other pages)
+           ========================================================================== */
+        :root {
+            --primary-color: #0d47a1; /* Deep Blue */
+            --secondary-color: #1976d2; /* Lighter Blue */
+            --accent-color: #ff6f00; /* Bright Orange */
+            --text-light: #ffffff;
+            --text-dark: #212529;
+            --bg-light-grey: #f8f9fa;
+            --border-color: #dee2e6;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* Basic Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-family); color: var(--text-dark); line-height: 1.7; }
+        a { text-decoration: none; color: var(--secondary-color); }
+        img { max-width: 100%; height: auto; display: block; }
+        h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        
+        /* ==========================================================================
+           2. Reusable Header & Footer
+           ========================================================================== */
+        .header { background-color: var(--text-light); box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
+        .nav-menu ul { list-style: none; display: flex; gap: 30px; }
+        .nav-menu a { color: var(--text-dark); font-weight: 600; transition: color 0.3s ease; }
+        .nav-menu a:hover { color: var(--accent-color); }
+        .header-phone { font-weight: 600; color: var(--primary-color); }
+        .mobile-nav-toggle { display: none; font-size: 1.8rem; cursor: pointer; }
+        
+        .footer { background-color: var(--text-dark); color: var(--bg-light-grey); padding: 60px 0 20px 0; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { font-size: 1.2rem; margin-bottom: 20px; color: var(--text-light); position: relative; }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 50px; height: 2px; background-color: var(--accent-color); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--bg-light-grey); transition: color 0.3s ease, padding-left 0.3s ease; }
+        .footer-col ul li a:hover { color: var(--accent-color); padding-left: 5px; }
+        .copyright { text-align: center; padding-top: 20px; border-top: 1px solid #444; font-size: 0.9rem; color: #ccc; }
+
+        /* ==========================================================================
+           3. Contact Page Specific Styles
+           ========================================================================== */
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .contact-details h1 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+        }
+
+        .contact-info-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .contact-info-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info-list i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-right: 20px;
+            width: 25px; /* Aligns text neatly */
+            text-align: center;
+        }
+        
+        .contact-info-list a {
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-list a:hover {
+            color: var(--accent-color);
+        }
+
+        .business-hours {
+            margin-top: 40px;
+        }
+        
+        .business-hours h3 {
+            color: var(--primary-color);
+        }
+
+        .google-map {
+            margin-top: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .google-map iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+        
+        .contact-form-wrapper {
+            background-color: var(--bg-light-grey);
+            padding: 40px;
+            border-radius: 8px;
+        }
+        
+        .contact-form-wrapper h2 {
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            font-family: var(--font-family);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 5px rgba(255, 111, 0, 0.5);
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e66400;
+        }
+
+        /* ==========================================================================
+           4. Responsive Styles
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .nav-menu, .header-phone { display: none; }
+            .mobile-nav-toggle { display: block; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-form-wrapper { margin-top: 50px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ======================= Header ======================= -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">AIROTRIPS</a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="tel:+917715940786" class="header-phone">+91 77 15 940 786</a>
+                <i class="fas fa-bars mobile-nav-toggle"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ======================= Contact Section ======================= -->
+        <section class="contact-page">
+            <div class="container">
+                <div class="contact-grid">
+                    
+                    <!-- Left Column: Contact Details -->
+                    <div class="contact-details">
+                        <h1>Get in Touch</h1>
+                        <p>We're here to help you with all your travel and documentation needs. Reach out to us via phone, email, or visit our office in Lucknow.</p>
+                        
+                        <ul class="contact-info-list">
+                            <li><i class="fas fa-mobile-alt"></i> <a href="tel:+917715940786">+91 77 15 940 786</a></li>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:contact@yourcompany.com">contact@yourcompany.com</a></li>
+                            <li><i class="fas fa-map-marker-alt"></i> <span>123 Business Avenue, Gomti Nagar,<br>Lucknow, Uttar Pradesh, 226010</span></li>
+                        </ul>
+
+                        <div class="business-hours">
+                            <h3>Business Hours</h3>
+                            <p>Monday - Saturday: 10:00 AM - 6:00 PM<br>Sunday: Closed</p>
+                        </div>
+
+                        <div class="google-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113998.81527395027!2d80.88147814335937!3d26.844433100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd028ea31263%3A0x8f224b74a3b1711a!2sGomti%20Nagar%2C%20Lucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1678886366815!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Contact Form -->
+                    <div class="contact-form-wrapper">
+                        <h2>Send Us a Query</h2>
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <label for="full-name">Full Name</label>
+                                <input type="text" id="full-name" name="full-name" class="form-control" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">I'm interested in:</label>
+                                <select id="service" name="service" class="form-control" required>
+                                    <option value="" disabled selected>-- Select a Service --</option>
+                                    <option value="Air Ticketing">Air Ticketing</option>
+                                    <option value="Visa Stamping">Visa Stamping Services</option>
+                                    <option value="Passport Assistance">Passport Assistance</option>
+                                    <option value="Document Attestation">Document Attestation</option>
+                                    <option value="Travel Insurance">Travel Insurance</option>
+                                    <option value="Other">Other Inquiry</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" rows="5" class="form-control" placeholder="Describe your query in detail..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Submit Query</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======================= Footer ======================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>AIROTRIPS</h4>
+                    <p>Your trusted partner for seamless global travel and documentation services. We simplify your journey from start to finish.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#">Air Ticketing</a></li>
+                        <li><a href="#">Visa Assistance</a></li>
+                        <li><a href="#">Passport Services</a></li>
+                        <li><a href="#">Document Attestation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Details</h4>
+                    <p>
+                        <i class="fa-solid fa-phone"></i> +91 77 15 940 786<br>
+                        <i class="fa-solid fa-envelope"></i> contact@[yourcompany].com<br>
+                        <i class="fa-solid fa-map-marker-alt"></i> 123 Business Avenue, Gomti Nagar, Lucknow, Uttar Pradesh, 226010
+                    </p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 AIROTRIPS. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
